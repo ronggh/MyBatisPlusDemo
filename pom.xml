@@ -51,8 +51,15 @@
             <artifactId>spring-orm</artifactId>
             <version>4.3.10.RELEASE</version>
         </dependency>
-    </dependencies>
+        <!--省去getter/setter，toString等方法 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <scope>provided</scope>
+        </dependency>
 
+    </dependencies>
 
 
 </project>

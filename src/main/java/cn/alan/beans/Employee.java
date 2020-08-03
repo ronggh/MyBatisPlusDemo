@@ -1,8 +1,10 @@
 package cn.alan.beans;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
+import lombok.*;
 
 /**
  * javaBean
@@ -18,56 +20,31 @@ import com.baomidou.mybatisplus.enums.IdType;
  *
  */
 
-@TableName(value="t_employee")
+@TableName(value = "t_employee")
+// lombok
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@NoArgsConstructor
 public class Employee {
     /*
      * @TableId:
      * 	 value: 指定表中的主键列的列名， 如果实体属性名与列名一致，可以省略不指定.
      *   type: 指定主键策略.
      */
-    @TableId(value = "id",type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+    @NonNull
     private String lastName;
+    @NonNull
     private String gender;
+    private String email;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public Employee() {
-    }
-
-    public Employee(String lastName, String gender) {
-        this.lastName = lastName;
-        this.gender = gender;
-    }
-
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
-                '}';
-    }
+    // 如果不需在要数据库表中存储
+    @TableField(exist = false)
+    private Double salary;
 }
+
+
