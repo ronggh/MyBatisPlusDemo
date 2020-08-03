@@ -2,6 +2,7 @@ package cn.alan;
 
 import cn.alan.beans.Employee;
 import cn.alan.mapper.EmployeeMapper;
+import com.baomidou.mybatisplus.mapper.Condition;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
@@ -19,8 +20,6 @@ import java.util.Map;
 public class TestMyBatisPlus {
     //
     private ApplicationContext context =  new ClassPathXmlApplicationContext("applicationContext.xml");
-
-    //
     private EmployeeMapper employeeMapper = context.getBean("employeeMapper",EmployeeMapper.class);
 
 
@@ -139,13 +138,67 @@ public class TestMyBatisPlus {
         System.out.println("deleteBatchIds() result: " + result);
     }
 
-    // 6.
+    // 6. EntityWrapper包装复杂查询条件
     @Test
     public void testWrapSelect(){
         // 分页查询，lastName中含有Tom且性别为男的所有员工
         Wrapper wrapper = new EntityWrapper<Employee>();
-        wrapper.like("lastName","Tom").eq("gender","男");
+        wrapper.like("lastName","Tom")
+                .eq("gender","男");
         List<Employee> list = employeeMapper.selectPage(new Page<Employee>(1,5),wrapper);
         System.out.println(list);
     }
+
+    // 7. selectList():带条件查询
+    @Test
+    public void testSelectList(){
+        Wrapper wrapper = new EntityWrapper<Employee>();
+        wrapper.like("lastName","Tom")
+                .eq("gender","男")
+                // 使用or()时的SQL：   SELECT id AS id,lastName,gender,email FROM t_employee WHERE (lastName LIKE ? AND gender = ? OR email LIKE ?)
+                .or()
+
+                // 使用orNew()时的SQL：SELECT id AS id,lastName,gender,email FROM t_employee WHERE (lastName LIKE ? AND gender = ?) OR (email LIKE ?)
+                // 即 orNew()后新产生一个括号
+                //.orNew()
+                .like("email","163")
+        .orderBy("lastName")
+                // last()方法把内容拼接到框架产生的SQL语句中
+        .last("desc");
+        List<Employee> list  = employeeMapper.selectList(wrapper);
+        System.out.println(list);
+
+        // 也可以使用Condition类
+        list = employeeMapper.selectList(Condition.create().eq("lastName","Tom"));
+        System.out.println(list);
+    }
+
+    // 8. 条件修改
+    @Test
+    public void testWrapUpdate(){
+        // 修改后的数据
+        Employee employee  = new Employee();
+        employee.setLastName("Miqi");
+        employee.setEmail("miqi@sina.com");
+        employee.setGender("女");
+
+        Integer result = employeeMapper.update(employee,
+                new EntityWrapper<Employee>()
+                        .eq("lastName","Tom2")
+                .eq("gender","男")
+        );
+
+        System.out.println("update result:" + result);
+    }
+
+    // 9. 条件删除
+    @Test
+    public void testWrapDelete(){
+        Integer result = employeeMapper.delete(new EntityWrapper<Employee>()
+        .eq("lastName","Jack2")
+        .eq("email","jack2@163.com"));
+        System.out.println("delete result : " + result);
+    }
+
+
 }
