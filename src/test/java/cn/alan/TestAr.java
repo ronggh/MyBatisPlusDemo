@@ -89,5 +89,6 @@ public class TestAr {
                 new EntityWrapper<ArEmployee>().like("lastName","Tom"));
         List<ArEmployee> list = page.getRecords();
         System.out.println(list);
+
     }
 }
