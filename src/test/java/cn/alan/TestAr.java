@@ -1,20 +1,20 @@
 package cn.alan;
 
 import cn.alan.beans.ArEmployee;
-import cn.alan.mapper.EmployeeMapper;
+
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.awt.geom.Area;
+
 import java.util.List;
 
 public class TestAr {
     //
     private ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
-    private EmployeeMapper employeeMapper = context.getBean("employeeMapper", EmployeeMapper.class);
+
 
     // 1. AR(Active Record)模式插入
     @Test
@@ -89,6 +89,7 @@ public class TestAr {
                 new EntityWrapper<ArEmployee>().like("lastName","Tom"));
         List<ArEmployee> list = page.getRecords();
         System.out.println(list);
-
     }
+
+    //
 }

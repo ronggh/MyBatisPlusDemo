@@ -16,6 +16,14 @@
             <artifactId>mybatis-plus</artifactId>
             <version>2.3</version>
         </dependency>
+
+        <!-- Apache velocity 用于MyBatisPlus代码生成，使用的模板 -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+            <version>2.0</version>
+        </dependency>
+
         <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -51,12 +59,44 @@
             <artifactId>spring-orm</artifactId>
             <version>4.3.10.RELEASE</version>
         </dependency>
-        <!--省去getter/setter，toString等方法 -->
+        <!-- lombok 省去getter/setter，toString等方法 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!-- sfl4j -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+
+        <!-- swagger2 API文档自动生成器 -->
+        <!--
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        -->
+        <!--swagger API支持-->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-spring-boot-starter</artifactId>
+            <version>2.0.3</version>
         </dependency>
 
     </dependencies>
