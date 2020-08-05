@@ -75,20 +75,22 @@
          如：last_name  ======> lastName -->
         <property name="dbColumnUnderline" value="false"></property>
 
-        <!-- 全局的主键策略 -->
+        <!-- 全局的主键策略 0: Auto，自增 -->
         <property name="idType" value="0"></property>
 
         <!-- 全局的表前缀策略配置 -->
         <property name="tablePrefix" value="t_"></property>
 
         <!-- 注入自定义全局操作 -->
-		<!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
+        <!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
         <!-- 注入逻辑删除 -->
         <property name="sqlInjector" ref="logicSqlInjector"></property>
         <!-- 注入逻辑删除全局值 -->
-        <property name="logicDeleteValue" value = "-1"></property>
+        <property name="logicDeleteValue" value="-1"></property>
         <property name="logicNotDeleteValue" value="1"></property>
 
+        <!-- 注入公共字段填充处理器 -->
+        <property name="metaObjectHandler" ref="myMetaHandler"/>
 
     </bean>
 
@@ -96,6 +98,10 @@
     <bean id="mySqlInjector" class="cn.alan.injector.MySqlInjector"></bean>
     <!-- 逻辑删除 -->
     <bean id="logicSqlInjector" class="com.baomidou.mybatisplus.mapper.LogicSqlInjector"></bean>
+
+    <!-- 公共字段填充处理器 -->
+    <bean id="myMetaHandler" class="cn.alan.metahandler.MyMetaHandler"/>
+
     <!--
         配置mybatis 扫描mapper接口的路径
      -->

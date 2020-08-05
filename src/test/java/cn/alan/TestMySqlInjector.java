@@ -1,7 +1,6 @@
 package cn.alan;
 
-import cn.alan.beans.ArEmployee;
-import cn.alan.beans.Employee;
+
 import cn.alan.mapper.EmployeeMapper;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
