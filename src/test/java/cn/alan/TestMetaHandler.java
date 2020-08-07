@@ -15,23 +15,23 @@ public class TestMetaHandler {
     @Test
     public void testInsert(){
         Emp emp = new Emp();
-        emp.setName("Judy");
+        emp.setName("Tom");
         emp.setDeleteFlag(1);
         empMapper.insert(emp);
 
         //
-        emp = empMapper.selectById(emp.getId());
-        System.out.println(emp);
+//        emp = empMapper.selectById(emp.getId());
+//        System.out.println(emp);
     }
 
     @Test
     public void testUpdate(){
         Emp emp = new Emp();
         emp.setId(2);
-        emp.setName("Tom");
+        emp.setName("Marry");
         empMapper.updateById(emp);
 
         //
-        System.out.println(empMapper.selectById(2));
+//        System.out.println(empMapper.selectById(2));
     }
 }

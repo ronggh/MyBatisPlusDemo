@@ -75,6 +75,7 @@
          如：last_name  ======> lastName -->
         <property name="dbColumnUnderline" value="false"></property>
 
+
         <!-- 全局的主键策略 0: Auto，自增 -->
         <property name="idType" value="0"></property>
 

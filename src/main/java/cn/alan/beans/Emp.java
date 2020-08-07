@@ -18,6 +18,7 @@ import lombok.ToString;
 public class Emp {
     private Integer id;
     private String name;
+
     @TableField(value = "delete_flag")
     @TableLogic // 表明这是一个用来表示逻辑删除的字段
     private Integer deleteFlag;

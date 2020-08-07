@@ -19,12 +19,12 @@ public class MyMetaHandler extends MetaObjectHandler {
         // 无值，则自动填充
         Date date = new Date();
         String strDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        if (createTime == null) {
+        if ( null == createTime) {
             System.out.println("=============满足自动填充条件============");
             setFieldValByName("createTime", strDate, metaObject);
         }
 
-        if (updateTime == null) {
+        if (null == updateTime ) {
             System.out.println("=============满足自动填充条件============");
             setFieldValByName("updateTime", strDate, metaObject);
         }
@@ -37,7 +37,7 @@ public class MyMetaHandler extends MetaObjectHandler {
         Object updateTime = getFieldValByName("updateTime", metaObject);
 
         //
-        if (updateTime == null) {
+        if (null == updateTime ) {
             System.out.println("=============满足自动填充条件============");
             Date date = new Date();
             String strDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
