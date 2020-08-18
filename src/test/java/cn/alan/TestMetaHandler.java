@@ -15,8 +15,9 @@ public class TestMetaHandler {
     @Test
     public void testInsert(){
         Emp emp = new Emp();
-        emp.setName("Tom");
+        emp.setName("Tom2");
         emp.setDeleteFlag(1);
+        emp.setCreateTime("2222-12-23");
         empMapper.insert(emp);
 
         //
@@ -27,7 +28,7 @@ public class TestMetaHandler {
     @Test
     public void testUpdate(){
         Emp emp = new Emp();
-        emp.setId(2);
+        emp.setId(8);
         emp.setName("Marry");
         empMapper.updateById(emp);
 

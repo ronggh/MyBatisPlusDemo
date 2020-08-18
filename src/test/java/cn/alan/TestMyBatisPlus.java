@@ -40,6 +40,7 @@ public class TestMyBatisPlus {
         // insert()：方法根据实体对象非空属性值进行插入
         Integer result = employeeMapper.insert(employee);
 
+
         System.out.println("Insert Result:" + result);
 
         Integer keyId = employee.getId();
@@ -68,6 +69,7 @@ public class TestMyBatisPlus {
         employee.setId(3);
         //
         Integer result;
+
         // 3.1 updateById():通过id进行修改，只修改有值的字段
         result = employeeMapper.updateById(employee);
         System.out.println("updateById result :" + result);
@@ -75,6 +77,7 @@ public class TestMyBatisPlus {
         // 3.2 通过ID修改所有列，未赋值的置为NULL
         result = employeeMapper.updateAllColumnById(employee);
         System.out.println("updateAllColumnById result :" + result);
+
     }
 
     // 4. select -- selectById()、selectOne()、selectBatchIds()
@@ -112,6 +115,13 @@ public class TestMyBatisPlus {
         // 4.5 selectPage():分页查询,不建议用，有分页插件，性能比这个方法好
         resultList = employeeMapper.selectPage(new Page<Employee>(1,5),null);
         System.out.println(resultList);
+
+        // 4.6 查询统计数
+        Wrapper<Employee> wrapper = new EntityWrapper<>();
+        wrapper.eq("gender","男");
+        int count  = employeeMapper.selectCount(wrapper);
+        System.out.println("count = " + count);
+
     }
 
     // 5. delete ----- deleteById()、deleteByMap()、deleteBatchIds()
@@ -141,6 +151,7 @@ public class TestMyBatisPlus {
     // 6. EntityWrapper包装复杂查询条件
     @Test
     public void testWrapSelect(){
+
         // 分页查询，lastName中含有Tom且性别为男的所有员工
         Wrapper wrapper = new EntityWrapper<Employee>();
         wrapper.like("lastName","Tom")
@@ -182,6 +193,9 @@ public class TestMyBatisPlus {
         employee.setEmail("miqi@sina.com");
         employee.setGender("女");
 
+        
+
+
         Integer result = employeeMapper.update(employee,
                 new EntityWrapper<Employee>()
                         .eq("lastName","Tom2")
@@ -198,6 +212,7 @@ public class TestMyBatisPlus {
         .eq("lastName","Jack2")
         .eq("email","jack2@163.com"));
         System.out.println("delete result : " + result);
+
     }
 
 

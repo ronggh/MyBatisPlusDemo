@@ -86,6 +86,7 @@
         <!--<property name="sqlInjector" ref="mySqlInjector"></property>-->
         <!-- 注入逻辑删除 -->
         <property name="sqlInjector" ref="logicSqlInjector"></property>
+
         <!-- 注入逻辑删除全局值 -->
         <property name="logicDeleteValue" value="-1"></property>
         <property name="logicNotDeleteValue" value="1"></property>

@@ -20,7 +20,7 @@ public class TestGenerator {
         GlobalConfig config = new GlobalConfig();
         config.setActiveRecord(true) // 是否支持AR模式
                 .setAuthor("alan") // 作者
-                .setOutputDir("f:\\test\\src\\main\\java") // 生成路径
+                .setOutputDir("F:\\MyProject\\MyBatisPlusDemo\\src\\main\\java") // 生成路径
                 .setFileOverride(true)  // 文件覆盖
                 .setIdType(IdType.AUTO) // 主键策略
                 .setServiceName("I%sService")  // 设置生成的service接口的名字的首字母是否为I
@@ -48,7 +48,7 @@ public class TestGenerator {
 
         //4. 包名策略配置
         PackageConfig pkConfig = new PackageConfig();
-        pkConfig.setParent("cn.alan")
+        pkConfig.setParent("com.alan")
                 .setMapper("mapper")
                 .setService("service")
                 .setController("controller")

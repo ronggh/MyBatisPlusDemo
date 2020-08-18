@@ -11,7 +11,7 @@ public class TestLogicDelete {
 
     @Test
     public void testDeleteLogic(){
-        Integer result = empMapper.deleteById(1);
+        Integer result = empMapper.deleteById(8);
         System.out.println("result :" + result);
     }
 
